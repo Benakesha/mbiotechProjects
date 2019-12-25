@@ -1,0 +1,11 @@
+.containers {
+  background-color: #fff;
+  padding-bottom: 5%;
+  height: 140vh;
+}
+
+@media only screen and (max-width: 768px) {
+  .containers {
+    height: 100vh;
+  }
+}
