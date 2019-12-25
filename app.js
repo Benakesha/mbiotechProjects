@@ -1,9 +1,8 @@
 var cluster = require("cluster");
 var numCPUs = require("os").cpus().length;
-process.env.NODE_ENV = "local_machine";
-
+process.env.NODE_ENV = "development";
+var host = "ec2-13-58-162-228.us-east-2.compute.amazonaws.com";
 if (cluster.isMaster) {
-  // Fork workers.
   for (var i = 0; i < numCPUs; i++) {
     var env = { workerId: i },
       newWorker = cluster.fork(env);
@@ -21,7 +20,7 @@ if (cluster.isMaster) {
 } else {
   var app = require("./lib/app");
   var config = require("./lib/config.js").getConfig();
-  app.listen(config.port, function() {
+  app.listen(config.port, host, function() {
     console.log("I am running on Port: " + config.port);
   });
 }

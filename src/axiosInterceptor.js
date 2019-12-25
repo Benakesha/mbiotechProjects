@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInterceptor = axios.create({
-  baseURL: "http://localhost:3000/api/v1"
+  baseURL: "http://ec2-13-58-162-228.us-east-2.compute.amazonaws.com/api/v1"
 });
 
 axiosInterceptor.defaults.headers.common["Content-Type"] = "application/json";
